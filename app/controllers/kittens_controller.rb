@@ -3,10 +3,25 @@ class KittensController < ApplicationController
 
   def index
     @kittens = Kitten.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @kittens }
+    end
   end
 
   def new
     @kitten = Kitten.new
+  end
+
+  def edit
+  end
+
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @kitten }
+    end
   end
 
   def create
@@ -19,18 +34,12 @@ class KittensController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @kitten.update(kitten_params)
       redirect_to kitten_url(@kitten), notice: 'Kitten was sucessfully updated.'
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
   end
 
   def destroy
