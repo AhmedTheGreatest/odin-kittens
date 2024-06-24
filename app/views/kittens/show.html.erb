@@ -1,0 +1,7 @@
+<%= render @kitten %>
+
+<div class="kitten-show-links">
+  <%= link_to "Edit", edit_kitten_path(@kitten) %>
+  <%= link_to "Back", kittens_path %>
+  <%= link_to "Delete", @kitten, method: :delete %>
+</div>
