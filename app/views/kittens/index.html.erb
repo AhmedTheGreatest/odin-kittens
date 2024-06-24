@@ -1,12 +1,13 @@
 <h1>Kittens</h1>
 
-<div class="kittens">
+<ul class="kittens">
   <% @kittens.each do |kitten| %>
-    <%= render kitten %>
-    <p class="kitten-links">
-      <%= link_to "Show this kitten", kitten %>
-    </p>
+    <li class="kitten-overview">
+      <%= kitten.name %>
+      <%= link_to "Show", kitten %>
+      <%= link_to "Delete", @kitten, method: :delete %>
+    </li>
   <% end %>
-</div>
+</ul>
 
 <%= link_to "New Kitten", new_kitten_path %>
